@@ -2,7 +2,7 @@
 
 ![ZMK](https://img.shields.io/badge/firmware-ZMK-blue)
 ![Keyboard](https://img.shields.io/badge/keyboard-Glove80-orange)
-![ZMK](https://img.shields.io/badge/firmware-ZMK-blue)
+![OS](https://img.shields.io/badge/host-Windows-blue)
 
 ![MoErgo Logo](moergo_logo.png)
 
@@ -94,10 +94,12 @@ Most users will find it easier to start there before moving to full ZMK customiz
 repo
 │
 ├─ config
-│   ├─ behaviors
-│   ├─ combos
 │   ├─ features
-│   │   ├─ compose_hyper.dtsi
+│   │   ├─ compose_hyper.dtsi           ← Orchestrator: hold-tap + hyper + includes
+│   │   ├─ international
+│   │   │   ├─ win_altcode.dtsi         ← DRY macro generator (Windows Alt Codes)
+│   │   │   ├─ spanish.dtsi             ← á/Á é/É í/Í ó/Ó ú/Ú ñ/Ñ
+│   │   │   └─ german.dtsi              ← ä/Ä ö/Ö ü/Ü ß
 │   │   └─ layer_rgb.c
 │   │
 │   ├─ glove80.conf
@@ -107,15 +109,27 @@ repo
 │   └─ keymap.json
 │
 ├─ layouts
-│   └─ jhoan_editor_v5_1.keymap
+│   └─ personal_editor_ver5_1.keymap
 │
 ├─ docs
 │   └─ legacy
 │       └─ rgb_layers.dtsi
 │
-├─ build.yaml
 └─ README.md
 ```
+
+---
+
+# Layer Map
+
+| Index | Layer | Purpose |
+|-------|-------|---------|
+| 0 | Base | QWERTY main layout |
+| 1 | Gaming | Gaming-optimized layout |
+| 2 | Lower | Media, navigation, numpad |
+| 3 | Magic | Bluetooth, RGB, bootloader |
+| 4 | Accent | Spanish accents (sticky / one-shot) |
+| 5 | Umlaut | German umlauts (sticky / one-shot) |
 
 ---
 
@@ -124,16 +138,151 @@ repo
 The layout exported from the **Glove80 Layout Editor** is stored here:
 
 ```
-layouts/jhoan_editor_v5_1.keymap
+layouts/personal_editor_ver5_1.keymap
 ```
 
 To compile firmware with this layout:
 
 ```
-cp layouts/jhoan_editor_v5_1.keymap config/glove80.keymap
+cp layouts/personal_editor_ver5_1.keymap config/glove80.keymap
 ```
 
 Then commit and push to trigger the **GitHub Actions build**.
+
+---
+
+# International Character System
+
+This configuration provides **accent and umlaut input** using a dedicated key, without changing the OS keyboard layout (English US). Characters are sent via **Windows Alt Codes** through ZMK macros.
+
+### Architecture
+
+The system is modular and DRY. A C preprocessor macro generator (`win_altcode.dtsi`) eliminates boilerplate, so each character definition is a single line:
+
+```
+config/features/international/
+├─ win_altcode.dtsi     ← Macro generators: WIN_ALTCODE, WIN_ALTCODE_PAIR, MOD_MORPH_SHIFT
+├─ spanish.dtsi         ← 6 character pairs using the generators
+└─ german.dtsi          ← 3 character pairs + eszett using the generators
+```
+
+Adding a new language only requires:
+
+1. Create a new `.dtsi` file with `WIN_ALTCODE_PAIR` calls (one line per character).
+2. Add a `#include` in `compose_hyper.dtsi`.
+3. Map the new behaviors in a keymap layer.
+
+### How It Works
+
+The `WIN_ALTCODE_PAIR` macro generates three ZMK nodes from a single line:
+
+```c
+WIN_ALTCODE_PAIR(a_acute, 2,2,5, 1,9,3)
+```
+
+Expands to:
+
+- `mac_a_acute` → ZMK macro sending Alt+0225 (á)
+- `mac_a_acute_upper` → ZMK macro sending Alt+0193 (Á)
+
+Then `MOD_MORPH_SHIFT(a_acute)` generates:
+
+- `mm_a_acute` → mod-morph that sends lowercase on tap, uppercase when Shift is held
+
+### Accent Layer (Layer 4)
+
+Activated by **tapping** the Compose/Hyper key. It's a sticky layer (one-shot): press a character key, get the accented version, auto-return to Base.
+
+```
+[tap Compose] → A → á       (+ Shift → Á)
+[tap Compose] → E → é       (+ Shift → É)
+[tap Compose] → I → í       (+ Shift → Í)
+[tap Compose] → O → ó       (+ Shift → Ó)
+[tap Compose] → U → ú       (+ Shift → Ú)
+[tap Compose] → N → ñ       (+ Shift → Ñ)
+[tap Compose] → S → ß
+```
+
+### Umlaut Layer (Layer 5)
+
+Activated by **tapping Compose twice** (from within the Accent layer, tap the same key position again):
+
+```
+[tap Compose] → [tap Compose] → A → ä       (+ Shift → Ä)
+[tap Compose] → [tap Compose] → O → ö       (+ Shift → Ö)
+[tap Compose] → [tap Compose] → U → ü       (+ Shift → Ü)
+[tap Compose] → [tap Compose] → S → ß
+```
+
+### Requirements
+
+- Host OS keyboard layout set to **English US**
+- **NumLock** must be ON (the macros send numpad keycodes)
+- No additional software required on Windows
+
+---
+
+# Compose + Hyper Key
+
+This configuration uses a **dual-purpose key** implemented with ZMK hold-tap behavior.
+
+| Action | Result |
+|--------|--------|
+| Tap | Sticky Accent layer (one-shot) |
+| Hold | Hyper modifier |
+
+### Behavior Diagram
+
+```
+    Compose/Hyper key
+           │
+     ┌─────┴─────┐
+     │           │
+   Tap         Hold (200ms+)
+     │           │
+  &sl Accent   Hyper macro
+     │           │
+ one-shot      Ctrl + Alt + Shift + GUI
+  layer 4       (held until key release)
+```
+
+The implementation uses **ZMK hold-tap** with a `hyper_macro` that uses `macro_pause_for_release` to keep all four modifiers held for the duration of the keypress.
+
+Defined in:
+
+```
+config/features/compose_hyper.dtsi
+```
+
+And wired in the keymap as:
+
+```
+&compose_hyper 0 LAYER_Accent
+```
+
+---
+
+# Hyper Key
+
+Holding the Compose/Hyper key activates **Hyper**, which sends:
+
+```
+Ctrl + Alt + Shift + GUI
+```
+
+This modifier is commonly used for:
+
+- window manager shortcuts
+- automation
+- keyboard driven workflows
+
+Example usage:
+
+```
+Hyper + H → open terminal
+Hyper + J → move workspace
+Hyper + K → launch browser
+```
 
 ---
 
@@ -146,7 +295,7 @@ The goal is to have the keyboard change its RGB color automatically depending on
 Example layer color mapping:
 
 | Layer | Color |
-|------|------|
+|-------|-------|
 | Base | Light Blue |
 | Gaming | Electric Blue |
 | Lower | Red |
@@ -181,127 +330,26 @@ This repository documents the implementation to help other Glove80 users searchi
 
 ---
 
-# Compose + Hyper Key
-
-This configuration replaces **Right Alt (RALT)** with a dual‑purpose key.
-
-| Action | Result |
-|------|------|
-| Tap | Compose key |
-| Hold | Hyper key |
-
-### Behavior Diagram
-
-```
-        RALT key
-           │
-     ┌─────┴─────┐
-     │           │
-   Tap         Hold
-     │           │
- Compose       Hyper
-               │
-    Ctrl + Alt + Shift + GUI
-```
-
-The implementation uses **ZMK hold‑tap behavior**.
-
-```
-Tap  → Compose
-Hold → Hyper
-```
-
-Defined in:
-
-```
-config/features/compose_hyper.dtsi
-```
-
-And wired in the keymap by replacing:
-
-```
-&sk RALT
-```
-
-with:
-
-```
-&compose_hyper
-```
-
----
-
-# Compose Key Usage
-
-Compose allows typing international characters **without depending on OS keyboard layout**.
-
-Examples:
-
-```
-Compose + a → á
-Compose + e → é
-Compose + i → í
-Compose + o → ó
-Compose + u → ú
-
-Compose + n → ñ
-
-Compose + u → ü
-Compose + s → ß
-```
-
-This works consistently across:
-
-- Windows
-- Linux
-- macOS
-
----
-
-# Hyper Key
-
-Holding the same key activates **Hyper**, which sends:
-
-```
-Ctrl + Alt + Shift + GUI
-```
-
-This modifier is commonly used for:
-
-- window manager shortcuts
-- automation
-- keyboard driven workflows
-
-Example usage:
-
-```
-Hyper + H → open terminal
-Hyper + J → move workspace
-Hyper + K → launch browser
-```
-
----
-
 # Feature Modularization
 
 Features are stored in the `features` folder to keep the main keymap clean.
 
 ```
 config/features/
-```
-
-Example features implemented here:
-
-```
-compose_hyper.dtsi
-layer_rgb.c
+├── compose_hyper.dtsi              ← Orchestrator (includes + hyper + hold-tap)
+├── international/
+│   ├── win_altcode.dtsi            ← DRY macro generator
+│   ├── spanish.dtsi                ← Spanish accents
+│   └── german.dtsi                 ← German umlauts + eszett
+└── layer_rgb.c                     ← RGB per layer (experimental)
 ```
 
 Benefits:
 
-- easier maintenance
-- cleaner keymap
-- reusable features
+- Each file has a single responsibility
+- Adding a language = one file + one `#include`
+- Swapping input method (e.g. WinCompose, Linux) = rewrite only `win_altcode.dtsi`
+- The keymap stays clean — all complexity lives in feature files
 
 ---
 
@@ -326,7 +374,7 @@ Benefits:
 # Search Keywords
 
 ```
-glove80 zmk glove80-config zmk-config zmk-keymap rgb-per-layer glove80-rgb zmk-rgb glove80-layout ergonomic-keyboard split-keyboard zmk-compose-key zmk-hyper-key
+glove80 zmk glove80-config zmk-config zmk-keymap rgb-per-layer glove80-rgb zmk-rgb glove80-layout ergonomic-keyboard split-keyboard zmk-compose-key zmk-hyper-key zmk-accent-layer zmk-windows-alt-code zmk-umlaut zmk-international-characters zmk-dead-key glove80-spanish glove80-german
 ```
 
 ---
@@ -343,4 +391,3 @@ Feel free to fork or adapt it for your own keyboard setup.
 
 - ZMK Firmware
 - MoErgo Glove80
-

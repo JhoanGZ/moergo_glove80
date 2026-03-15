@@ -1,17 +1,44 @@
-/ {
-    behaviors {
+/*
+ * Compose / Hyper Key
+ *
+ * Hold → Hyper (Ctrl + Alt + Shift + GUI)
+ * Tap  → Sticky Accent layer (áéíóú ñ ß)
+ *
+ * From Accent layer, tap the same key again → Umlaut layer (äöü ß)
+ *
+ * In keymap:  &compose_hyper 0 LAYER_Accent
+ */
 
+/* ─── Layer indexes ─── */
+#define LAYER_Accent 4
+#define LAYER_Umlaut 5
+
+/* ─── International character system ─── */
+#include "international/win_altcode.dtsi"
+#include "international/spanish.dtsi"
+#include "international/german.dtsi"
+
+/* ─── Hyper macro + hold-tap behavior ─── */
+/ {
+    macros {
+        hyper_macro: hyper_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            bindings
+                = <&macro_press &kp LCTRL &kp LALT &kp LSHFT &kp LGUI>
+                , <&macro_pause_for_release>
+                , <&macro_release &kp LCTRL &kp LALT &kp LSHFT &kp LGUI>;
+        };
+    };
+
+    behaviors {
         compose_hyper: compose_hyper {
             compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <0>;
+            #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
-
-            bindings = <
-                &kp C_COMPOSE
-                &kp LC(LS(LA(LG)))
-            >;
+            bindings = <&hyper_macro>, <&sl>;
         };
-
     };
 };

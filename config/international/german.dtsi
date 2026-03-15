@@ -1,0 +1,27 @@
+/*
+ * German — Umlaut + Eszett macros + mod-morphs
+ *
+ * Requires: international/win_altcode.dtsi (included before this file)
+ *
+ * Characters:  ä/Ä  ö/Ö  ü/Ü  ß
+ *
+ * Keymap references:
+ *   &mm_a_uml  &mm_o_uml  &mm_u_uml  &mac_eszett
+ */
+
+/ {
+    macros {
+        /*               name     lower(0___)   upper(0___)              */
+        WIN_ALTCODE_PAIR(a_uml,   2,2,8,        1,9,6)  /* ä=0228 Ä=0196 */
+        WIN_ALTCODE_PAIR(o_uml,   2,4,6,        2,1,4)  /* ö=0246 Ö=0214 */
+        WIN_ALTCODE_PAIR(u_uml,   2,5,2,        2,2,0)  /* ü=0252 Ü=0220 */
+
+        WIN_ALTCODE(eszett,       2,2,3)                 /* ß=0223        */
+    };
+
+    behaviors {
+        MOD_MORPH_SHIFT(a_uml)
+        MOD_MORPH_SHIFT(o_uml)
+        MOD_MORPH_SHIFT(u_uml)
+    };
+};

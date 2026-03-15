@@ -1,0 +1,32 @@
+/*
+ * Spanish — Accent macros + mod-morphs
+ *
+ * Requires: international/win_altcode.dtsi (included before this file)
+ *
+ * Characters:  á/Á  é/É  í/Í  ó/Ó  ú/Ú  ñ/Ñ
+ *
+ * Keymap references:
+ *   &mm_a_acute  &mm_e_acute  &mm_i_acute
+ *   &mm_o_acute  &mm_u_acute  &mm_n_tilde
+ */
+
+/ {
+    macros {
+        /*                 name       lower(0___)    upper(0___)       */
+        WIN_ALTCODE_PAIR(a_acute,  2,2,5,         1,9,3)  /* á=0225 Á=0193 */
+        WIN_ALTCODE_PAIR(e_acute,  2,3,3,         2,0,1)  /* é=0233 É=0201 */
+        WIN_ALTCODE_PAIR(i_acute,  2,3,7,         2,0,5)  /* í=0237 Í=0205 */
+        WIN_ALTCODE_PAIR(o_acute,  2,4,3,         2,1,1)  /* ó=0243 Ó=0211 */
+        WIN_ALTCODE_PAIR(u_acute,  2,5,0,         2,1,8)  /* ú=0250 Ú=0218 */
+        WIN_ALTCODE_PAIR(n_tilde,  2,4,1,         2,0,9)  /* ñ=0241 Ñ=0209 */
+    };
+
+    behaviors {
+        MOD_MORPH_SHIFT(a_acute)
+        MOD_MORPH_SHIFT(e_acute)
+        MOD_MORPH_SHIFT(i_acute)
+        MOD_MORPH_SHIFT(o_acute)
+        MOD_MORPH_SHIFT(u_acute)
+        MOD_MORPH_SHIFT(n_tilde)
+    };
+};
