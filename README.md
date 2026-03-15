@@ -1,37 +1,142 @@
-# MoErgo Glove80 Custom Configuration for ZMK
+# Jhoan's Glove80 ZMK Configuration
 
 ![MoErgo Logo](moergo_logo.png)
 
-This repo is the official ZMK configuration of the MoErgo Glove80 wireless split contoured keyboard. Use it to develop your own keymap and easily build your own ZMK firmware to run on your Glove80.
+This repository contains my personal ZMK configuration for the MoErgo Glove80 wireless split contoured keyboard.
 
-**NOTE: You can also customize the layout of your Glove80 keyboard with the Glove80 Layout Editor webapp. For most users Glove80 Layout Editor is the recommended and simpler option. More information is available at the official MoErgo Glove80 Support site (see resources below).**
+It includes my custom layers, key bindings, and firmware configuration used to build and flash firmware for my keyboard.
 
-These steps will get you using your keymap on your keyboard in the fastest time possible. It uses the GitHub Actions feature to build your firmware online.
+While this repository is primarily maintained for my own setup, anyone is welcome to explore, learn from it, or use it as a starting point for their own Glove80 configuration.
 
-If you are looking to dig deeper into ZMK and develop new functionality, it is recommended to follow the steps of installing ZMK as found on the official ZMK documentation site (linked below).
+The firmware is built automatically using GitHub Actions, making it easy to modify the layout and generate updated firmware for the keyboard.
 
-## Resources
-- The [official MoErgo Glove80 Support](https://moergo.com/glove80-support) web site. Glove80 documentation and other technical resources.
-- The [official MoErgo Discord Server](https://moergo.com/discord). Instant conversations with other Glove80 users.
+---
 
-- The [official ZMK Documentation](https://zmk.dev/docs) web site. Find the answers to many of your questions about ZMK Firmware.
-- The [official ZMK Discord Server](https://discord.gg/8cfMkQksSB). Instant conversations with other ZMK developers and users. Great technical resource!
+# Purpose of this Repository
 
-- The [official Glove80 ZMK Distribution](https://github.com/moergo-sc/zmk). Repositiory for ZMK firmware customized for Glove80. 
- 
-## Instructions
-1. Log into, or sign up for, your personal GitHub account.
-2. Create your own repository using this repository as a template ([instructions](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template)) and check it out on your local computer.
-3. Edit the keymap file(s) to suit your needs
-4. Commit and push your changes to your personal repo. Upon pushing it, GitHub Actions will start building a new version of your firmware with the updated keymap.
+This repository serves as:
 
-## Firmware Files
-To locate your firmware files and reflash your Glove80...
-1. log into GitHub and navigate to your personal config repository you just uploaded your keymap changes to.
-2. Click "Actions" in the main navigation, and in the left navigation click the "Build" link.
-3. Select the desired workflow run in the centre area of the page (based on date and time of the build you wish to use). You can also start a new build from this page by clicking the "Run workflow" button.
-4. After clicking the desired workflow run, you should be presented with a section at the bottom of the page called "Artifacts". This section contains the results of your build, in a file called "glove80.uf2"
-5. Download the glove80.uf2
-6. Flash the firmware to Glove80 according to the user documentation on the official Glove80 Glove80 Support website (linked above)
+- My personal firmware configuration for the Glove80
+- A place to experiment with layouts, layers, and behaviors
+- A reference for others interested in custom ZMK setups for Glove80
 
-Your keyboard is now ready to use.
+It is based on the official ZMK configuration template provided by MoErgo.
+
+---
+
+# Customizing Your Own Layout
+
+If you want to adapt this configuration for your own keyboard:
+
+1. Fork this repository or use it as a template.
+2. Modify the keymap files located in:
+
+```
+config/glove80.keymap
+```
+
+3. Commit and push your changes.
+4. GitHub Actions will automatically build a new firmware version.
+
+---
+
+# Firmware Build Process
+
+This repository uses GitHub Actions to build the firmware automatically whenever changes are pushed.
+
+To download the compiled firmware:
+
+1. Open this repository on GitHub.
+2. Click **Actions** in the navigation bar.
+3. Select the latest **Build** workflow run.
+4. Scroll to the bottom of the page and download the artifact:
+
+```
+glove80.uf2
+```
+
+---
+
+# Flashing the Firmware
+
+To flash the firmware onto your Glove80:
+
+1. Connect the keyboard to your computer via USB.
+2. Enter **bootloader mode**.
+3. The keyboard will appear as a USB drive.
+4. Copy the file:
+
+```
+glove80.uf2
+```
+
+into the drive.
+
+The keyboard will reboot automatically with the new firmware.
+
+---
+
+# Alternative Layout Editing
+
+For users who prefer a graphical interface, the official Glove80 Layout Editor is available.
+
+Most users will find it easier to start there before moving to full ZMK customization.
+
+---
+
+# Resources
+
+### MoErgo
+
+- https://moergo.com/glove80-support
+- https://moergo.com/discord
+
+### ZMK Firmware
+
+- https://zmk.dev/docs
+- https://discord.gg/8cfMkQksSB
+
+### Official Glove80 ZMK Distribution
+
+- https://github.com/moergo-sc/zmk
+
+---
+
+# License / Usage
+
+This configuration is shared publicly for learning and experimentation.
+
+Feel free to fork or adapt it for your own keyboard setup.
+
+
+
+---
+
+# RGB Per Layer Implementation (Work in Progress)
+
+I am currently implementing **RGB per layer behavior** for the Glove80 using ZMK. The goal is to have the keyboard change its RGB color automatically depending on which layer is active.
+
+This repository will progressively include examples and configuration snippets showing how to implement **layer-aware RGB behavior** in ZMK for the Glove80.
+
+Typical use case:
+
+```
+Base layer   → Blue
+Lower layer  → Red
+GOG layer → Dark blue
+Magic layer  → RGB off
+```
+
+The intention of documenting this here is to help other Glove80 users who want to implement **"RGB per layer"**, **"layer RGB indicator"**, or **"RGB layer feedback"** in their own ZMK configurations.
+
+Search terms that may help people find this repository:
+
+- glove80 rgb per layer
+- zmk rgb layer indicator
+- glove80 zmk rgb configuration
+- glove80 layer color indicator
+- zmk underglow per layer
+
+As the configuration evolves, I will add practical examples in the keymap and configuration files so others can reuse or adapt the implementation.
+
+If you are experimenting with **ZMK RGB behaviors or layer indicators**, feel free to fork this repository and adapt the configuration for your keyboard
