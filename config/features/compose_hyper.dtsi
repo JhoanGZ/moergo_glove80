@@ -1,14 +1,19 @@
-#include "hyper.dtsi"
-#include "compose.dtsi"
-
 / {
     behaviors {
+
+        hyper: hyper {
+            compatible = "zmk,behavior-mods";
+            #binding-cells = <0>;
+            mods = <(MOD_LCTL | MOD_LALT | MOD_LSFT | MOD_LGUI)>;
+        };
+
         compose_hyper: compose_hyper {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <0>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
-            bindings = <&compose>, <&hyper>;
+            bindings = <&kp C_COMPOSE>, <&hyper>;
         };
+
     };
 };

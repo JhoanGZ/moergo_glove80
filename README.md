@@ -97,8 +97,6 @@ repo
 │   ├─ behaviors
 │   ├─ combos
 │   ├─ features
-│   │   ├─ compose.dtsi
-│   │   ├─ hyper.dtsi
 │   │   ├─ compose_hyper.dtsi
 │   │   └─ layer_rgb.c
 │   │
@@ -295,8 +293,6 @@ config/features/
 Example features implemented here:
 
 ```
-compose.dtsi
-hyper.dtsi
 compose_hyper.dtsi
 layer_rgb.c
 ```

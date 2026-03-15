@@ -1,9 +1,0 @@
-/ {
-    behaviors {
-        compose: compose {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp COMPOSE>;
-        };
-    };
-};
