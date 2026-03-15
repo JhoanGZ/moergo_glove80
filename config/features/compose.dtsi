@@ -1,7 +1,9 @@
-behaviors {
-    compose: compose {
-        compatible = "zmk,behavior-macro";
-        label = "COMPOSE";
-        #binding-cells = <0>;
+/ {
+    behaviors {
+        compose: compose {
+            compatible = "zmk,behavior-macro";
+            label = "COMPOSE";
+            #binding-cells = <0>;
+        };
     };
 };

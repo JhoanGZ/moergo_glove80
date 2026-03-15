@@ -50,7 +50,7 @@ static int layer_rgb_listener(const zmk_event_t *eh) {
             zmk_led_set_hsv(0, 100, 100); // red
             break;
 
-        case 2: //  GOG
+        case 2: //  Gaming
             zmk_led_set_hsv(220, 100, 100); // electric blue
             break;
 

@@ -6,9 +6,9 @@
         compose_hyper: compose_hyper {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <0>;
-            flavor = "tap-preffered";
+            flavor = "tap-preferred";
             tapping-term-ms = <200>;
             bindings = <&compose>, <&hyper>;
         };
     };
-}
+};
