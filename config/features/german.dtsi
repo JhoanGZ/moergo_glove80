@@ -1,27 +1,39 @@
 /*
- * German — Umlaut + Eszett macros + mod-morphs
- *
- * Requires: international/win_altcode.dtsi (included before this file)
+ * German — Umlaut + Eszett macros + shift-aware mod-morphs
  *
  * Characters:  ä/Ä  ö/Ö  ü/Ü  ß
+ * Method:      Windows Alt Codes (ANSI 0xxx via numpad)
  *
- * Keymap references:
- *   &mm_a_uml  &mm_o_uml  &mm_u_uml  &mac_eszett
+ * Keymap refs: &mm_a_uml &mm_o_uml &mm_u_uml &mac_eszett
  */
 
 / {
     macros {
-        /*               name     lower(0___)   upper(0___)              */
-        WIN_ALTCODE_PAIR(a_uml,   2,2,8,        1,9,6)  /* ä=0228 Ä=0196 */
-        WIN_ALTCODE_PAIR(o_uml,   2,4,6,        2,1,4)  /* ö=0246 Ö=0214 */
-        WIN_ALTCODE_PAIR(u_uml,   2,5,2,        2,2,0)  /* ü=0252 Ü=0220 */
+        mac_a_uml: mac_a_uml { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <40>; tap-ms = <40>;
+            bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N2 &kp KP_N8>, <&macro_release &kp LALT>; };
+        mac_a_uml_upper: mac_a_uml_upper { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <40>; tap-ms = <40>;
+            bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N1 &kp KP_N9 &kp KP_N6>, <&macro_release &kp LALT>; };
 
-        WIN_ALTCODE(eszett,       2,2,3)                 /* ß=0223        */
+        mac_o_uml: mac_o_uml { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <40>; tap-ms = <40>;
+            bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N4 &kp KP_N6>, <&macro_release &kp LALT>; };
+        mac_o_uml_upper: mac_o_uml_upper { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <40>; tap-ms = <40>;
+            bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N1 &kp KP_N4>, <&macro_release &kp LALT>; };
+
+        mac_u_uml: mac_u_uml { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <40>; tap-ms = <40>;
+            bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N5 &kp KP_N2>, <&macro_release &kp LALT>; };
+        mac_u_uml_upper: mac_u_uml_upper { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <40>; tap-ms = <40>;
+            bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N2 &kp KP_N0>, <&macro_release &kp LALT>; };
+
+        mac_eszett: mac_eszett { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <40>; tap-ms = <40>;
+            bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N2 &kp KP_N3>, <&macro_release &kp LALT>; };
     };
 
     behaviors {
-        MOD_MORPH_SHIFT(a_uml)
-        MOD_MORPH_SHIFT(o_uml)
-        MOD_MORPH_SHIFT(u_uml)
+        mm_a_uml: mm_a_uml { compatible = "zmk,behavior-mod-morph"; #binding-cells = <0>;
+            bindings = <&mac_a_uml>, <&mac_a_uml_upper>; mods = <(MOD_LSFT|MOD_RSFT)>; };
+        mm_o_uml: mm_o_uml { compatible = "zmk,behavior-mod-morph"; #binding-cells = <0>;
+            bindings = <&mac_o_uml>, <&mac_o_uml_upper>; mods = <(MOD_LSFT|MOD_RSFT)>; };
+        mm_u_uml: mm_u_uml { compatible = "zmk,behavior-mod-morph"; #binding-cells = <0>;
+            bindings = <&mac_u_uml>, <&mac_u_uml_upper>; mods = <(MOD_LSFT|MOD_RSFT)>; };
     };
 };

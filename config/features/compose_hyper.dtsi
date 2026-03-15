@@ -9,16 +9,12 @@
  * In keymap:  &compose_hyper 0 LAYER_Accent
  */
 
-/* ─── Layer indexes ─── */
 #define LAYER_Accent 4
 #define LAYER_Umlaut 5
 
-/* ─── International character system ─── */
-#include "win_altcode.dtsi"
 #include "spanish.dtsi"
 #include "german.dtsi"
 
-/* ─── Hyper macro + hold-tap behavior ─── */
 / {
     macros {
         hyper_macro: hyper_macro {

@@ -95,7 +95,6 @@ repo
 ├─ config
 │   ├─ features
 │   │   ├─ compose_hyper.dtsi       ← Orchestrator: hold-tap + hyper + includes
-│   │   ├─ win_altcode.dtsi         ← DRY macro generator (Windows Alt Codes)
 │   │   ├─ spanish.dtsi             ← á/Á é/É í/Í ó/Ó ú/Ú ñ/Ñ
 │   │   ├─ german.dtsi              ← ä/Ä ö/Ö ü/Ü ß
 │   │   └─ layer_rgb.c
@@ -155,37 +154,20 @@ This configuration provides **accent and umlaut input** using a dedicated key, w
 
 ### Architecture
 
-The system is modular and DRY. A C preprocessor macro generator (`win_altcode.dtsi`) eliminates boilerplate, so each character definition is a single line:
+Each language file defines its own macros and shift-aware mod-morphs as explicit devicetree nodes. The orchestrator includes them and wires the hold-tap behavior:
 
 ```
-config/features/international/
-├─ win_altcode.dtsi     ← Macro generators: WIN_ALTCODE, WIN_ALTCODE_PAIR, MOD_MORPH_SHIFT
-├─ spanish.dtsi         ← 6 character pairs using the generators
-└─ german.dtsi          ← 3 character pairs + eszett using the generators
+config/features/
+├─ compose_hyper.dtsi   ← Orchestrator: includes languages + hyper + hold-tap
+├─ spanish.dtsi         ← 6 character pairs (macro + mod-morph each)
+└─ german.dtsi          ← 3 character pairs + eszett
 ```
 
 Adding a new language only requires:
 
-1. Create a new `.dtsi` file with `WIN_ALTCODE_PAIR` calls (one line per character).
+1. Create a new `.dtsi` file with macro + mod-morph nodes.
 2. Add a `#include` in `compose_hyper.dtsi`.
 3. Map the new behaviors in a keymap layer.
-
-### How It Works
-
-The `WIN_ALTCODE_PAIR` macro generates three ZMK nodes from a single line:
-
-```c
-WIN_ALTCODE_PAIR(a_acute, 2,2,5, 1,9,3)
-```
-
-Expands to:
-
-- `mac_a_acute` → ZMK macro sending Alt+0225 (á)
-- `mac_a_acute_upper` → ZMK macro sending Alt+0193 (Á)
-
-Then `MOD_MORPH_SHIFT(a_acute)` generates:
-
-- `mm_a_acute` → mod-morph that sends lowercase on tap, uppercase when Shift is held
 
 ### Accent Layer (Layer 4)
 
@@ -335,9 +317,8 @@ Features are stored in the `features` folder to keep the main keymap clean.
 ```
 config/features/
 ├── compose_hyper.dtsi      ← Orchestrator (includes + hyper + hold-tap)
-├── win_altcode.dtsi        ← DRY macro generator
-├── spanish.dtsi            ← Spanish accents
-├── german.dtsi             ← German umlauts + eszett
+├── spanish.dtsi            ← Spanish accents (macros + mod-morphs)
+├── german.dtsi             ← German umlauts + eszett (macros + mod-morphs)
 └── layer_rgb.c             ← RGB per layer (experimental)
 ```
 
@@ -345,7 +326,6 @@ Benefits:
 
 - Each file has a single responsibility
 - Adding a language = one file + one `#include`
-- Swapping input method (e.g. WinCompose, Linux) = rewrite only `win_altcode.dtsi`
 - The keymap stays clean — all complexity lives in feature files
 
 ---

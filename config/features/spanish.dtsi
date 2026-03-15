@@ -1,32 +1,58 @@
 /*
- * Spanish — Accent macros + mod-morphs
- *
- * Requires: international/win_altcode.dtsi (included before this file)
+ * Spanish — Accent macros + shift-aware mod-morphs
  *
  * Characters:  á/Á  é/É  í/Í  ó/Ó  ú/Ú  ñ/Ñ
+ * Method:      Windows Alt Codes (ANSI 0xxx via numpad)
  *
- * Keymap references:
- *   &mm_a_acute  &mm_e_acute  &mm_i_acute
- *   &mm_o_acute  &mm_u_acute  &mm_n_tilde
+ * Keymap refs: &mm_a_acute &mm_e_acute &mm_i_acute
+ *              &mm_o_acute &mm_u_acute &mm_n_tilde
  */
 
 / {
     macros {
-        /*                 name       lower(0___)    upper(0___)       */
-        WIN_ALTCODE_PAIR(a_acute,  2,2,5,         1,9,3)  /* á=0225 Á=0193 */
-        WIN_ALTCODE_PAIR(e_acute,  2,3,3,         2,0,1)  /* é=0233 É=0201 */
-        WIN_ALTCODE_PAIR(i_acute,  2,3,7,         2,0,5)  /* í=0237 Í=0205 */
-        WIN_ALTCODE_PAIR(o_acute,  2,4,3,         2,1,1)  /* ó=0243 Ó=0211 */
-        WIN_ALTCODE_PAIR(u_acute,  2,5,0,         2,1,8)  /* ú=0250 Ú=0218 */
-        WIN_ALTCODE_PAIR(n_tilde,  2,4,1,         2,0,9)  /* ñ=0241 Ñ=0209 */
+        mac_a_acute: mac_a_acute { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <40>; tap-ms = <40>;
+            bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N2 &kp KP_N5>, <&macro_release &kp LALT>; };
+        mac_a_acute_upper: mac_a_acute_upper { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <40>; tap-ms = <40>;
+            bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N1 &kp KP_N9 &kp KP_N3>, <&macro_release &kp LALT>; };
+
+        mac_e_acute: mac_e_acute { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <40>; tap-ms = <40>;
+            bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N3 &kp KP_N3>, <&macro_release &kp LALT>; };
+        mac_e_acute_upper: mac_e_acute_upper { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <40>; tap-ms = <40>;
+            bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N0 &kp KP_N1>, <&macro_release &kp LALT>; };
+
+        mac_i_acute: mac_i_acute { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <40>; tap-ms = <40>;
+            bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N3 &kp KP_N7>, <&macro_release &kp LALT>; };
+        mac_i_acute_upper: mac_i_acute_upper { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <40>; tap-ms = <40>;
+            bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N0 &kp KP_N5>, <&macro_release &kp LALT>; };
+
+        mac_o_acute: mac_o_acute { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <40>; tap-ms = <40>;
+            bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N4 &kp KP_N3>, <&macro_release &kp LALT>; };
+        mac_o_acute_upper: mac_o_acute_upper { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <40>; tap-ms = <40>;
+            bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N1 &kp KP_N1>, <&macro_release &kp LALT>; };
+
+        mac_u_acute: mac_u_acute { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <40>; tap-ms = <40>;
+            bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N5 &kp KP_N0>, <&macro_release &kp LALT>; };
+        mac_u_acute_upper: mac_u_acute_upper { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <40>; tap-ms = <40>;
+            bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N1 &kp KP_N8>, <&macro_release &kp LALT>; };
+
+        mac_n_tilde: mac_n_tilde { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <40>; tap-ms = <40>;
+            bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N4 &kp KP_N1>, <&macro_release &kp LALT>; };
+        mac_n_tilde_upper: mac_n_tilde_upper { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <40>; tap-ms = <40>;
+            bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N0 &kp KP_N9>, <&macro_release &kp LALT>; };
     };
 
     behaviors {
-        MOD_MORPH_SHIFT(a_acute)
-        MOD_MORPH_SHIFT(e_acute)
-        MOD_MORPH_SHIFT(i_acute)
-        MOD_MORPH_SHIFT(o_acute)
-        MOD_MORPH_SHIFT(u_acute)
-        MOD_MORPH_SHIFT(n_tilde)
+        mm_a_accent: mm_a_accent { compatible = "zmk,behavior-mod-morph"; #binding-cells = <0>;
+            bindings = <&mac_a_acute>, <&mac_a_acute_upper>; mods = <(MOD_LSFT|MOD_RSFT)>; };
+        mm_e_accent: mm_e_accent { compatible = "zmk,behavior-mod-morph"; #binding-cells = <0>;
+            bindings = <&mac_e_acute>, <&mac_e_acute_upper>; mods = <(MOD_LSFT|MOD_RSFT)>; };
+        mm_i_accent: mm_i_accent { compatible = "zmk,behavior-mod-morph"; #binding-cells = <0>;
+            bindings = <&mac_i_acute>, <&mac_i_acute_upper>; mods = <(MOD_LSFT|MOD_RSFT)>; };
+        mm_o_accent: mm_o_accent { compatible = "zmk,behavior-mod-morph"; #binding-cells = <0>;
+            bindings = <&mac_o_acute>, <&mac_o_acute_upper>; mods = <(MOD_LSFT|MOD_RSFT)>; };
+        mm_u_accent: mm_u_accent { compatible = "zmk,behavior-mod-morph"; #binding-cells = <0>;
+            bindings = <&mac_u_acute>, <&mac_u_acute_upper>; mods = <(MOD_LSFT|MOD_RSFT)>; };
+        mm_n_tilde: mm_n_tilde { compatible = "zmk,behavior-mod-morph"; #binding-cells = <0>;
+            bindings = <&mac_n_tilde>, <&mac_n_tilde_upper>; mods = <(MOD_LSFT|MOD_RSFT)>; };
     };
 };
