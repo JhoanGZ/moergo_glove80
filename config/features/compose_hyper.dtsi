@@ -1,5 +1,5 @@
-#include "features/hyper.dtsi"
-#include "features/compose.dtsi"
+#include "hyper.dtsi"
+#include "compose.dtsi"
 
 / {
     behaviors {
