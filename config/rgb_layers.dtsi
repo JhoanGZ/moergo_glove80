@@ -1,0 +1,35 @@
+// Deprecated: replaced by layer_rgb.c listener implementation
+
+/ {
+    macros {
+
+        rgb_base: rgb_base {
+            label = "RGB_BASE";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&rgb_ug RGB_COLOR_HSB(190,100,70)>; // light blue
+        };
+
+        rgb_gaming: rgb_gaming {
+            label = "RGB_GAMING";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&rgb_ug RGB_COLOR_HSB(210,100,70)>; // electric blue
+        };
+
+        rgb_lower: rgb_lower {
+            label = "RGB_LOWER";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&rgb_ug RGB_COLOR_HSB(0,100,70)>; // red
+        };
+
+        rgb_magic: rgb_magic {
+            label = "RGB_MAGIC";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&rgb_ug RGB_OFF>;  // no rgb
+        };
+
+    };
+};
