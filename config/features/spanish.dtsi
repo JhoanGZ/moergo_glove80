@@ -3,9 +3,7 @@
  *
  * Characters:  á/Á  é/É  í/Í  ó/Ó  ú/Ú  ñ/Ñ
  * Method:      Windows Alt Codes (ANSI 0xxx via numpad)
- *
- * Each macro activates NumLock before and restores after,
- * so it works even without a physical numpad or NumLock key.
+ *              Requires NumLock ON (activate once from Lower layer)
  *
  * Keymap refs: &mm_a_acute &mm_e_acute &mm_i_acute
  *              &mm_o_acute &mm_u_acute &mm_n_tilde
@@ -13,47 +11,35 @@
 
 / {
     macros {
-        /* á = Alt+0225 */
-        mac_a_acute: mac_a_acute { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <60>; tap-ms = <60>;
-            bindings = <&macro_tap &kp KP_NUM>, <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N2 &kp KP_N5>, <&macro_release &kp LALT>, <&macro_tap &kp KP_NUM>; };
-        /* Á = Alt+0193 */
-        mac_a_acute_upper: mac_a_acute_upper { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <60>; tap-ms = <60>;
-            bindings = <&macro_tap &kp KP_NUM>, <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N1 &kp KP_N9 &kp KP_N3>, <&macro_release &kp LALT>, <&macro_tap &kp KP_NUM>; };
+        mac_a_acute: mac_a_acute { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <100>; tap-ms = <100>;
+            bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N2 &kp KP_N5>, <&macro_release &kp LALT>; };
+        mac_a_acute_upper: mac_a_acute_upper { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <100>; tap-ms = <100>;
+            bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N1 &kp KP_N9 &kp KP_N3>, <&macro_release &kp LALT>; };
 
-        /* é = Alt+0233 */
-        mac_e_acute: mac_e_acute { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <60>; tap-ms = <60>;
-            bindings = <&macro_tap &kp KP_NUM>, <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N3 &kp KP_N3>, <&macro_release &kp LALT>, <&macro_tap &kp KP_NUM>; };
-        /* É = Alt+0201 */
-        mac_e_acute_upper: mac_e_acute_upper { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <60>; tap-ms = <60>;
-            bindings = <&macro_tap &kp KP_NUM>, <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N0 &kp KP_N1>, <&macro_release &kp LALT>, <&macro_tap &kp KP_NUM>; };
+        mac_e_acute: mac_e_acute { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <100>; tap-ms = <100>;
+            bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N3 &kp KP_N3>, <&macro_release &kp LALT>; };
+        mac_e_acute_upper: mac_e_acute_upper { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <100>; tap-ms = <100>;
+            bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N0 &kp KP_N1>, <&macro_release &kp LALT>; };
 
-        /* í = Alt+0237 */
-        mac_i_acute: mac_i_acute { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <60>; tap-ms = <60>;
-            bindings = <&macro_tap &kp KP_NUM>, <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N3 &kp KP_N7>, <&macro_release &kp LALT>, <&macro_tap &kp KP_NUM>; };
-        /* Í = Alt+0205 */
-        mac_i_acute_upper: mac_i_acute_upper { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <60>; tap-ms = <60>;
-            bindings = <&macro_tap &kp KP_NUM>, <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N0 &kp KP_N5>, <&macro_release &kp LALT>, <&macro_tap &kp KP_NUM>; };
+        mac_i_acute: mac_i_acute { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <100>; tap-ms = <100>;
+            bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N3 &kp KP_N7>, <&macro_release &kp LALT>; };
+        mac_i_acute_upper: mac_i_acute_upper { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <100>; tap-ms = <100>;
+            bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N0 &kp KP_N5>, <&macro_release &kp LALT>; };
 
-        /* ó = Alt+0243 */
-        mac_o_acute: mac_o_acute { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <60>; tap-ms = <60>;
-            bindings = <&macro_tap &kp KP_NUM>, <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N4 &kp KP_N3>, <&macro_release &kp LALT>, <&macro_tap &kp KP_NUM>; };
-        /* Ó = Alt+0211 */
-        mac_o_acute_upper: mac_o_acute_upper { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <60>; tap-ms = <60>;
-            bindings = <&macro_tap &kp KP_NUM>, <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N1 &kp KP_N1>, <&macro_release &kp LALT>, <&macro_tap &kp KP_NUM>; };
+        mac_o_acute: mac_o_acute { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <100>; tap-ms = <100>;
+            bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N4 &kp KP_N3>, <&macro_release &kp LALT>; };
+        mac_o_acute_upper: mac_o_acute_upper { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <100>; tap-ms = <100>;
+            bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N1 &kp KP_N1>, <&macro_release &kp LALT>; };
 
-        /* ú = Alt+0250 */
-        mac_u_acute: mac_u_acute { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <60>; tap-ms = <60>;
-            bindings = <&macro_tap &kp KP_NUM>, <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N5 &kp KP_N0>, <&macro_release &kp LALT>, <&macro_tap &kp KP_NUM>; };
-        /* Ú = Alt+0218 */
-        mac_u_acute_upper: mac_u_acute_upper { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <60>; tap-ms = <60>;
-            bindings = <&macro_tap &kp KP_NUM>, <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N1 &kp KP_N8>, <&macro_release &kp LALT>, <&macro_tap &kp KP_NUM>; };
+        mac_u_acute: mac_u_acute { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <100>; tap-ms = <100>;
+            bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N5 &kp KP_N0>, <&macro_release &kp LALT>; };
+        mac_u_acute_upper: mac_u_acute_upper { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <100>; tap-ms = <100>;
+            bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N1 &kp KP_N8>, <&macro_release &kp LALT>; };
 
-        /* ñ = Alt+0241 */
-        mac_n_tilde: mac_n_tilde { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <60>; tap-ms = <60>;
-            bindings = <&macro_tap &kp KP_NUM>, <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N4 &kp KP_N1>, <&macro_release &kp LALT>, <&macro_tap &kp KP_NUM>; };
-        /* Ñ = Alt+0209 */
-        mac_n_tilde_upper: mac_n_tilde_upper { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <60>; tap-ms = <60>;
-            bindings = <&macro_tap &kp KP_NUM>, <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N0 &kp KP_N9>, <&macro_release &kp LALT>, <&macro_tap &kp KP_NUM>; };
+        mac_n_tilde: mac_n_tilde { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <100>; tap-ms = <100>;
+            bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N4 &kp KP_N1>, <&macro_release &kp LALT>; };
+        mac_n_tilde_upper: mac_n_tilde_upper { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <100>; tap-ms = <100>;
+            bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N0 &kp KP_N9>, <&macro_release &kp LALT>; };
     };
 
     behaviors {

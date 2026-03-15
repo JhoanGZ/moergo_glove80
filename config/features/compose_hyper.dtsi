@@ -8,9 +8,7 @@
  *
  * In keymap:  &compose_hyper 0 LAYER_Accent
  *
- * NOTE on uppercase: Hold shift physically (not sticky shift)
- *       while pressing the vowel in the accent layer.
- *       Sticky shift (&sk) is consumed by the layer activation.
+ * Requires NumLock ON for alt codes. Activate once from Lower layer.
  */
 
 #define LAYER_Accent 4
@@ -37,7 +35,7 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "tap-preferred";
-            tapping-term-ms = <700>;
+            tapping-term-ms = <300>;
             bindings = <&hyper_macro>, <&sl>;
         };
     };

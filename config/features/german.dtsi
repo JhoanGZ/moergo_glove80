@@ -3,38 +3,30 @@
  *
  * Characters:  ä/Ä  ö/Ö  ü/Ü  ß
  * Method:      Windows Alt Codes (ANSI 0xxx via numpad)
- *
- * Each macro activates NumLock before and restores after.
+ *              Requires NumLock ON (activate once from Lower layer)
  *
  * Keymap refs: &mm_a_uml &mm_o_uml &mm_u_uml &mac_eszett
  */
 
 / {
     macros {
-        /* ä = Alt+0228 */
-        mac_a_uml: mac_a_uml { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <60>; tap-ms = <60>;
-            bindings = <&macro_tap &kp KP_NUM>, <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N2 &kp KP_N8>, <&macro_release &kp LALT>, <&macro_tap &kp KP_NUM>; };
-        /* Ä = Alt+0196 */
-        mac_a_uml_upper: mac_a_uml_upper { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <60>; tap-ms = <60>;
-            bindings = <&macro_tap &kp KP_NUM>, <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N1 &kp KP_N9 &kp KP_N6>, <&macro_release &kp LALT>, <&macro_tap &kp KP_NUM>; };
+        mac_a_uml: mac_a_uml { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <100>; tap-ms = <100>;
+            bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N2 &kp KP_N8>, <&macro_release &kp LALT>; };
+        mac_a_uml_upper: mac_a_uml_upper { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <100>; tap-ms = <100>;
+            bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N1 &kp KP_N9 &kp KP_N6>, <&macro_release &kp LALT>; };
 
-        /* ö = Alt+0246 */
-        mac_o_uml: mac_o_uml { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <60>; tap-ms = <60>;
-            bindings = <&macro_tap &kp KP_NUM>, <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N4 &kp KP_N6>, <&macro_release &kp LALT>, <&macro_tap &kp KP_NUM>; };
-        /* Ö = Alt+0214 */
-        mac_o_uml_upper: mac_o_uml_upper { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <60>; tap-ms = <60>;
-            bindings = <&macro_tap &kp KP_NUM>, <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N1 &kp KP_N4>, <&macro_release &kp LALT>, <&macro_tap &kp KP_NUM>; };
+        mac_o_uml: mac_o_uml { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <100>; tap-ms = <100>;
+            bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N4 &kp KP_N6>, <&macro_release &kp LALT>; };
+        mac_o_uml_upper: mac_o_uml_upper { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <100>; tap-ms = <100>;
+            bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N1 &kp KP_N4>, <&macro_release &kp LALT>; };
 
-        /* ü = Alt+0252 */
-        mac_u_uml: mac_u_uml { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <60>; tap-ms = <60>;
-            bindings = <&macro_tap &kp KP_NUM>, <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N5 &kp KP_N2>, <&macro_release &kp LALT>, <&macro_tap &kp KP_NUM>; };
-        /* Ü = Alt+0220 */
-        mac_u_uml_upper: mac_u_uml_upper { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <60>; tap-ms = <60>;
-            bindings = <&macro_tap &kp KP_NUM>, <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N2 &kp KP_N0>, <&macro_release &kp LALT>, <&macro_tap &kp KP_NUM>; };
+        mac_u_uml: mac_u_uml { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <100>; tap-ms = <100>;
+            bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N5 &kp KP_N2>, <&macro_release &kp LALT>; };
+        mac_u_uml_upper: mac_u_uml_upper { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <100>; tap-ms = <100>;
+            bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N2 &kp KP_N0>, <&macro_release &kp LALT>; };
 
-        /* ß = Alt+0223 */
-        mac_eszett: mac_eszett { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <60>; tap-ms = <60>;
-            bindings = <&macro_tap &kp KP_NUM>, <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N2 &kp KP_N3>, <&macro_release &kp LALT>, <&macro_tap &kp KP_NUM>; };
+        mac_eszett: mac_eszett { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <100>; tap-ms = <100>;
+            bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N2 &kp KP_N3>, <&macro_release &kp LALT>; };
     };
 
     behaviors {
