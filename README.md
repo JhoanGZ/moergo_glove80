@@ -89,17 +89,15 @@ Most users will find it easier to start there before moving to full ZMK customiz
 ---
 
 # Repository Structure
-
 ```
 repo
 │
 ├─ config
 │   ├─ features
-│   │   ├─ compose_hyper.dtsi           ← Orchestrator: hold-tap + hyper + includes
-│   │   ├─ international
-│   │   │   ├─ win_altcode.dtsi         ← DRY macro generator (Windows Alt Codes)
-│   │   │   ├─ spanish.dtsi             ← á/Á é/É í/Í ó/Ó ú/Ú ñ/Ñ
-│   │   │   └─ german.dtsi              ← ä/Ä ö/Ö ü/Ü ß
+│   │   ├─ compose_hyper.dtsi       ← Orchestrator: hold-tap + hyper + includes
+│   │   ├─ win_altcode.dtsi         ← DRY macro generator (Windows Alt Codes)
+│   │   ├─ spanish.dtsi             ← á/Á é/É í/Í ó/Ó ú/Ú ñ/Ñ
+│   │   ├─ german.dtsi              ← ä/Ä ö/Ö ü/Ü ß
 │   │   └─ layer_rgb.c
 │   │
 │   ├─ glove80.conf
@@ -336,12 +334,11 @@ Features are stored in the `features` folder to keep the main keymap clean.
 
 ```
 config/features/
-├── compose_hyper.dtsi              ← Orchestrator (includes + hyper + hold-tap)
-├── international/
-│   ├── win_altcode.dtsi            ← DRY macro generator
-│   ├── spanish.dtsi                ← Spanish accents
-│   └── german.dtsi                 ← German umlauts + eszett
-└── layer_rgb.c                     ← RGB per layer (experimental)
+├── compose_hyper.dtsi      ← Orchestrator (includes + hyper + hold-tap)
+├── win_altcode.dtsi        ← DRY macro generator
+├── spanish.dtsi            ← Spanish accents
+├── german.dtsi             ← German umlauts + eszett
+└── layer_rgb.c             ← RGB per layer (experimental)
 ```
 
 Benefits:

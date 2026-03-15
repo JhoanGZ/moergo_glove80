@@ -14,9 +14,9 @@
 #define LAYER_Umlaut 5
 
 /* ─── International character system ─── */
-#include "international/win_altcode.dtsi"
-#include "international/spanish.dtsi"
-#include "international/german.dtsi"
+#include "win_altcode.dtsi"
+#include "spanish.dtsi"
+#include "german.dtsi"
 
 /* ─── Hyper macro + hold-tap behavior ─── */
 / {
