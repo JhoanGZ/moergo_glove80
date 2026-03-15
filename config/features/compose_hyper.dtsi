@@ -7,6 +7,10 @@
  * From Accent layer, tap the same key again → Umlaut layer (äöü ß)
  *
  * In keymap:  &compose_hyper 0 LAYER_Accent
+ *
+ * NOTE on uppercase: Hold shift physically (not sticky shift)
+ *       while pressing the vowel in the accent layer.
+ *       Sticky shift (&sk) is consumed by the layer activation.
  */
 
 #define LAYER_Accent 4
@@ -33,7 +37,7 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "tap-preferred";
-            tapping-term-ms = <200>;
+            tapping-term-ms = <700>;
             bindings = <&hyper_macro>, <&sl>;
         };
     };
