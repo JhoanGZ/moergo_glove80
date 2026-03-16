@@ -4,12 +4,9 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/rgb.h>
+#include <dt-bindings/zmk/rgb_colors.h>
 #include "features/compose_hyper.dtsi"
-// #include <dt-bindings/zmk/rgb_colors.h>
-// #include "features/rgb_layers.dtsi"
-
-/* On demand includes */
-
+#include "features/rgb_layers.dtsi"
 
 /* Helper Macros, based on https://github.com/urob/zmk-helpers/ */
 
