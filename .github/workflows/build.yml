@@ -10,7 +10,7 @@ jobs:
         with:
           submodules: recursive
       - name: Clone darknao ZMK fork
-        run: git clone --depth 1 --branch darknao/rgb-layer-24.12 https://github.com/darknao/zmk.git src
+        run: git clone --depth 1 --branch rgb-layer-25.08 https://github.com/darknao/zmk.git src
       - uses: cachix/install-nix-action@v25
         with:
           nix_path: nixpkgs=channel:nixos-22.05
