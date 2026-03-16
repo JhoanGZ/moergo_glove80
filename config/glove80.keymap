@@ -82,7 +82,7 @@
     &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL  &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL
     &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL          &ug TEAL &ug TEAL &ug TEAL  &ug TEAL &ug TEAL &ug TEAL          &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL
                 >;
-            layer-id = <LAYER_Base>;
+            layer-id = <0>;
         };
 
         gaming_rgb {
@@ -94,7 +94,7 @@
     &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE  &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE
     &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE          &ug BLUE &ug BLUE &ug BLUE  &ug BLUE &ug BLUE &ug BLUE          &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE
                 >;
-            layer-id = <LAYER_gaming>;
+            layer-id = <1>;
         };
 
         lower_rgb {
@@ -106,7 +106,7 @@
     &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED  &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED
     &ug RED &ug RED &ug RED &ug RED &ug RED          &ug RED &ug RED &ug RED  &ug RED &ug RED &ug RED          &ug RED &ug RED &ug RED &ug RED &ug RED
                 >;
-            layer-id = <LAYER_Lower>;
+            layer-id = <2>;
         };
 
         magic_rgb {
@@ -118,7 +118,7 @@
     &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___  &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___
     &ug ___ &ug ___ &ug ___ &ug ___ &ug ___         &ug ___ &ug ___ &ug ___  &ug ___ &ug ___ &ug ___         &ug ___ &ug ___ &ug ___ &ug ___ &ug ___
                 >;
-            layer-id = <LAYER_Magic>;
+            layer-id = <3>;
         };
 
         accent_rgb {
