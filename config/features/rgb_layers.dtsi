@@ -1,75 +1,90 @@
+/*
+ * RGB Underglow Per-Layer Configuration
+ * For use with darknao/zmk fork (darknao/rgb-layer-24.12)
+ *
+ * Colors:
+ *   Base    (0) = TEAL   (azul claro)
+ *   Gaming  (1) = BLUE   (electric blue)
+ *   Lower   (2) = RED
+ *   Magic   (3) = ___    (apagado)
+ *   Accent  (4) = GREEN  (español)
+ *   Umlaut  (5) = YELLOW (alemán)
+ *
+ * Requires: #include <dt-bindings/zmk/rgb_colors.h> in the main keymap
+ */
+
 / {
     underglow-layer {
         compatible = "zmk,underglow-layer";
 
         layer_Base_rgb {
             bindings = <
-                &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL
-                &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL
-                &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL
-                &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL
-                &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL
-                &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL
+                &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL                                                                                                                         &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL
+                &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL                                                                                                       &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL
+                &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL                                                                                                       &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL
+                &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL                                                                                                       &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL
+                &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL                         &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL
+                &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL                   &ug TEAL &ug TEAL &ug TEAL                 &ug TEAL &ug TEAL &ug TEAL                   &ug TEAL &ug TEAL &ug TEAL &ug TEAL &ug TEAL
             >;
-            layer-id = <LAYER_Base>;
+            layer-id = <0>;
         };
 
         layer_gaming_rgb {
             bindings = <
-                &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE
-                &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE
-                &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE
-                &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE
-                &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE
-                &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE
+                &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE                                                                                                                         &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE
+                &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE                                                                                                       &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE
+                &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE                                                                                                       &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE
+                &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE                                                                                                       &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE
+                &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE                         &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE
+                &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE                   &ug BLUE &ug BLUE &ug BLUE                 &ug BLUE &ug BLUE &ug BLUE                   &ug BLUE &ug BLUE &ug BLUE &ug BLUE &ug BLUE
             >;
-            layer-id = <LAYER_gaming>;
+            layer-id = <1>;
         };
 
         layer_Lower_rgb {
             bindings = <
-                &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED
-                &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED
-                &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED
-                &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED
-                &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED
-                &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED
+                &ug RED &ug RED &ug RED &ug RED &ug RED                                                                                                                      &ug RED &ug RED &ug RED &ug RED &ug RED
+                &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED                                                                                                      &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED
+                &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED                                                                                                      &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED
+                &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED                                                                                                      &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED
+                &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED                                   &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED &ug RED
+                &ug RED &ug RED &ug RED &ug RED &ug RED                   &ug RED &ug RED &ug RED                          &ug RED &ug RED &ug RED                   &ug RED &ug RED &ug RED &ug RED &ug RED
             >;
-            layer-id = <LAYER_Lower>;
+            layer-id = <2>;
         };
 
         layer_Magic_rgb {
             bindings = <
-                &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___
-                &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___
-                &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___
-                &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___
-                &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___
-                &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___
+                &ug ___ &ug ___ &ug ___ &ug ___ &ug ___                                                                                                                     &ug ___ &ug ___ &ug ___ &ug ___ &ug ___
+                &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___                                                                                                     &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___
+                &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___                                                                                                     &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___
+                &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___                                                                                                     &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___
+                &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___                                  &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___
+                &ug ___ &ug ___ &ug ___ &ug ___ &ug ___                   &ug ___ &ug ___ &ug ___                          &ug ___ &ug ___ &ug ___                   &ug ___ &ug ___ &ug ___ &ug ___ &ug ___
             >;
-            layer-id = <LAYER_Magic>;
+            layer-id = <3>;
         };
 
         layer_Accent_rgb {
             bindings = <
-                &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN
-                &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN
-                &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN
-                &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN
-                &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN
-                &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN
+                &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN                                                                                                                            &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN
+                &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN                                                                                                       &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN
+                &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN                                                                                                       &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN
+                &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN                                                                                                       &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN
+                &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN                         &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN
+                &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN                   &ug GREEN &ug GREEN &ug GREEN                 &ug GREEN &ug GREEN &ug GREEN                   &ug GREEN &ug GREEN &ug GREEN &ug GREEN &ug GREEN
             >;
             layer-id = <4>;
         };
 
         layer_Umlaut_rgb {
             bindings = <
-                &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW
-                &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW
-                &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW
-                &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW
-                &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW
-                &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW
+                &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW                                                                                                                               &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW
+                &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW                                                                                                         &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW
+                &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW                                                                                                         &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW
+                &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW                                                                                                         &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW
+                &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW                         &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW
+                &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW                   &ug YELLOW &ug YELLOW &ug YELLOW                 &ug YELLOW &ug YELLOW &ug YELLOW                   &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW
             >;
             layer-id = <5>;
         };
