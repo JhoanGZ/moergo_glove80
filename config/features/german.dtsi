@@ -10,22 +10,22 @@
 
 / {
     macros {
-        mac_a_uml: mac_a_uml { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <50>; tap-ms = <50>;
+        mac_a_uml: mac_a_uml { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <10>; tap-ms = <10>;
             bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N2 &kp KP_N8>, <&macro_release &kp LALT>; };
-        mac_a_uml_upper: mac_a_uml_upper { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <50>; tap-ms = <50>;
+        mac_a_uml_upper: mac_a_uml_upper { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <10>; tap-ms = <10>;
             bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N1 &kp KP_N9 &kp KP_N6>, <&macro_release &kp LALT>; };
 
-        mac_o_uml: mac_o_uml { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <50>; tap-ms = <50>;
+        mac_o_uml: mac_o_uml { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <10>; tap-ms = <10>;
             bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N4 &kp KP_N6>, <&macro_release &kp LALT>; };
-        mac_o_uml_upper: mac_o_uml_upper { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <50>; tap-ms = <50>;
+        mac_o_uml_upper: mac_o_uml_upper { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <10>; tap-ms = <10>;
             bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N1 &kp KP_N4>, <&macro_release &kp LALT>; };
 
-        mac_u_uml: mac_u_uml { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <50>; tap-ms = <50>;
+        mac_u_uml: mac_u_uml { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <10>; tap-ms = <10>;
             bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N5 &kp KP_N2>, <&macro_release &kp LALT>; };
-        mac_u_uml_upper: mac_u_uml_upper { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <50>; tap-ms = <50>;
+        mac_u_uml_upper: mac_u_uml_upper { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <10>; tap-ms = <10>;
             bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N2 &kp KP_N0>, <&macro_release &kp LALT>; };
 
-        mac_eszett: mac_eszett { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <50>; tap-ms = <50>;
+        mac_eszett: mac_eszett { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <10>; tap-ms = <10>;
             bindings = <&macro_press &kp LALT>, <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N2 &kp KP_N3>, <&macro_release &kp LALT>; };
     };
 
