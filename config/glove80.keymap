@@ -409,10 +409,10 @@
             bindings = <
                &kp F1    &kp F2   &kp F3    &kp F4     &kp F5                                                                                                             &kp F6     &kp F7    &kp F8     &kp F9    &kp F10
              &kp BSLH    &kp N1   &kp N2    &kp N3     &kp N4  &kp N5                                                                                           &kp N6    &kp N7     &kp N8    &kp N9     &kp N0  &kp PG_UP
-              &kp ESC     &kp Q    &kp W     &kp E      &kp R   &kp T                                                                                            &kp Y     &kp U      &kp I     &kp O      &kp P  &kp PG_DN
-              &kp TAB     &kp A    &kp S     &kp D      &kp F   &kp G                                                                                            &kp H     &kp J      &kp K     &kp L   &kp SEMI    &kp SQT
-            &kp GRAVE     &kp Z    &kp X     &kp C      &kp V   &kp B  &sk LSHFT  &kp LALT     &lower  &sk LGUI  &sl LAYER_Accent  &sk RSHFT   &kp N     &kp M  &kp COMMA   &kp DOT  &kp MINUS     &kp UP
- &magic LAYER_Magic 0  &kp HOME  &kp END  &kp LEFT  &kp RIGHT          &kp SPACE  &sk LCTRL  &kp DEL   &kp RET             &kp BSPC  &kp SPACE          &kp LBKT   &kp RBKT  &kp FSLH  &kp EQUAL   &kp DOWN
+              &kp TAB    &kp Q    &kp W     &kp E      &kp R   &kp T                                                                                            &kp Y     &kp U      &kp I     &kp O      &kp P  &kp PG_DN
+              &kp ESC     &kp A    &kp S     &kp D      &kp F   &kp G                                                                                            &kp H     &kp J      &kp K     &kp L   &kp MINUS     &kp SQT
+            &kp GRAVE     &kp Z    &kp X     &kp C      &kp V   &kp B  &kp LSHFT  &kp LALT &lower  &sk LGUI  &sl LAYER_Accent  &kp RSHFT   &kp N     &kp M  &kp COMMA   &kp DOT  &kp SEMI     &kp UP
+    &magic LAYER_Magic 0 HOME  &kp END  &kp LEFT  &kp RIGHT     &kp SPACE  &sk LCTRL  &kp DEL &kp RET  &kp BSPC  &kp SPACE          &kp LBKT   &kp RBKT  &kp FSLH  &kp EQUAL   &kp DOWN
             >;
         };
 
@@ -420,10 +420,10 @@
             bindings = <
     &kp F1     &kp F2  &kp F3  &kp F4  &kp F5                                                                                   &kp F6     &kp F7    &kp F8    &kp F9   &kp LGUI
  &kp EQUAL     &kp N1  &kp N2  &kp N3  &kp N4  &kp N5                                                                   &kp N6  &kp N7     &kp N8    &kp N9    &kp N0  &kp MINUS
-   &kp ESC    &kp TAB   &kp Q   &kp W   &kp E   &kp R                                                                    &kp Y   &kp U      &kp I     &kp O     &kp P   &kp BSLH
-     &kp N  &kp LSHFT   &kp A   &kp S   &kp D   &kp F                                                                    &kp H   &kp J      &kp K     &kp L  &kp SEMI    &kp SQT
-     &kp M  &kp LCTRL   &kp Z   &kp X   &kp C   &kp V  &kp KP_N1  &kp KP_N2  &kp HOME    &kp END   &kp LGUI  &kp RSHFT   &kp N   &kp M  &kp COMMA   &kp DOT  &kp FSLH    &kp RET
-    &lower   &kp FSLH   &kp B   &kp T   &kp G          &kp KP_N3  &kp SPACE   &kp RET  &kp KP_N5  &kp SPACE    &kp RET          &kp UP   &kp DOWN  &kp LBKT  &kp RBKT   &kp LGUI
+   &kp TAB   &kp N   &kp Q   &kp W   &kp E   &kp R                                                                    &kp Y   &kp U      &kp I     &kp O     &kp P   &kp BSLH
+     &kp ESC   &kp LSHFT   &kp A   &kp S   &kp D   &kp F                                                                    &kp H   &kp J      &kp K     &kp L  &kp SEMI    &kp SQT
+     &kp M  &kp LCTRL   &kp Z   &kp X   &kp C   &kp V  &kp KP_N1  &kp KP_N2  &lower  &kp KP_N3  &sk LGUI  &kp RSHFT   &kp N   &kp M  &kp COMMA   &kp DOT  &kp FSLH    &kp RET
+    &magic LAYER_Magic 0   &kp FSLH   &kp B   &kp T   &kp G       &kp LALT  &kp SPACE   &kp KP_N5  &kp RET  &kp KP_N3    &kp BSPC           &kp UP   &kp DOWN  &kp LBKT  &kp RBKT   &kp LGUI
             >;
         };
 
