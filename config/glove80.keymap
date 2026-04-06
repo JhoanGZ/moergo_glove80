@@ -376,12 +376,7 @@
 /* Custom Defined Behaviors */
 / {
     behaviors {
-        sl_accent: sl_accent {
-            compatible = "zmk,behavior-sticky-key";
-            #binding-cells = <1>;
-            bindings = <&mo>;
-            release-after-ms = <30>;
-        };
+
     };
 };
 
@@ -399,12 +394,10 @@
 / {
     behaviors {
 
-
     };
 };
 
 /* Automatically generated combos definitions */
-
 
 /* Manually generated keymap */
 / {
@@ -479,6 +472,5 @@
       &trans      &trans       &trans  &trans      &trans          &trans  &trans  &trans  &trans  &trans  &trans           &trans      &trans  &trans      &trans  &trans
             >;
         };
-
     };
 };
