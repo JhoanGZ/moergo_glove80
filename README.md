@@ -13,7 +13,7 @@ It includes custom layers, key bindings, RGB per-layer underglow, international 
 
 While this repository is primarily maintained for my own setup, anyone is welcome to explore, learn from it, or use it as a starting point for their own **Glove80 ZMK configuration**.
 
-The firmware is built automatically using **GitHub Actions** with the **darknao/zmk** fork for RGB per-layer support.
+The firmware is built automatically using **GitHub Actions** with a pinned **darknao/zmk** revision for RGB per-layer support. This fork-specific feature is not available in the current official MoErgo ZMK source, so this configuration does not yet track the latest official MoErgo implementation.
 
 ---
 
@@ -31,7 +31,7 @@ The firmware is built automatically using **GitHub Actions** with the **darknao/
 - **Accent key simplified** to `&sl LAYER_Accent` — Hyper decoupled to avoid hold-tap interference
 - **Hyper macro** preserved in `compose_hyper.dtsi` as `&hyper_macro` for future use (custom shortcuts via AutoHotkey or similar)
 - **Accent macro speed** reduced from `wait-ms=50 / tap-ms=50` to `wait-ms=10 / tap-ms=10` (~5x faster)
-- **Build workflow** switched from `actions/checkout` to `git clone --branch` for darknao fork (branch names with slashes fail with `actions/checkout@v4`)
+- **Build inputs** pinned to a specific darknao/ZMK commit so CI and local Docker builds use the same source
 
 ### v1.0 — Initial Custom Configuration
 
@@ -62,7 +62,7 @@ The firmware is built automatically using **GitHub Actions** with the **darknao/
 repo
 │
 ├─ .github/workflows
-│   └─ build.yml                    ← GitHub Actions (darknao/zmk fork)
+│   └─ build.yml                    ← GitHub Actions (pinned darknao/zmk revision)
 │
 ├─ config
 │   ├─ features
@@ -73,7 +73,12 @@ repo
 │   ├─ glove80.conf                 ← Firmware configuration (RGB, queue size, etc.)
 │   ├─ glove80.keymap               ← Main keymap + inline underglow-layer
 │   ├─ default.nix
-│   └─ info.json
+│   ├─ info.json
+│   └─ keymap.json                  ← Older two-layer editor export; not the active keymap
+│
+├─ layouts                           ← Alternate/archived keymap snapshots
+├─ Dockerfile                       ← Local build using the same pinned ZMK source
+├─ build.sh / build.bat             ← Local Docker build scripts
 │
 ├─ docs
 │   └─ legacy
@@ -108,7 +113,7 @@ CONFIG_EXPERIMENTAL_RGB_LAYER=y
 
 ## RGB Per-Layer Underglow
 
-This configuration uses the **darknao/zmk** fork (`rgb-layer-25.08` branch) which adds per-layer / per-key RGB underglow support.
+This configuration uses the **darknao/zmk** fork (`rgb-layer-25.08` branch) which adds per-layer / per-key RGB underglow support. The exact source commit used by builds is pinned in the workflow and Docker build defaults.
 
 ### How It Works
 
@@ -133,7 +138,6 @@ The layer effect uses the global brightness setting. To adjust:
 - `underglow-layer` must be **inlined in the keymap** — external `.dtsi` includes silently fail
 - `LAYER_*` macros do not resolve in devicetree context — use numeric IDs (`<0>`, `<1>`, etc.)
 - `CONFIG_EXPERIMENTAL_RGB_LAYER=y` is **required** — without it, the underglow-layer block is ignored
-- `actions/checkout@v4` cannot resolve branch names with slashes — use `git clone --branch` instead
 - Factory reset on **both halves** is required when switching between firmware versions
 
 ---
@@ -206,15 +210,16 @@ Defined in `config/features/compose_hyper.dtsi`.
 
 ## Build Process
 
-This repository uses **GitHub Actions** with the **darknao/zmk** fork to build firmware automatically.
+This repository uses **GitHub Actions** with **darknao/zmk** to build firmware automatically. The firmware source is pinned to commit `8aeaaa66fbb4b94948c8763e06f1920ab0b69480` (the `rgb-layer-25.08` branch at the time of pinning); CI and Docker use this same commit. GitHub Actions dependencies are also pinned to full commit SHAs.
 
-### Build Workflow
+The official MoErgo ZMK source is newer, but does not currently provide the fork-specific `rgb_colors.h` and per-layer RGB implementation used by this keymap. Preserving per-layer RGB therefore means this repository is not yet on the latest official MoErgo implementation; migrating would require replacing or dropping that feature.
 
-The workflow clones `darknao/zmk` (branch `rgb-layer-25.08`) instead of the official MoErgo fork, then builds using Nix:
+`config/glove80.keymap` is the active source of truth. `config/keymap.json` is an older two-layer editor export, and files under `layouts/` are alternative snapshots; neither is used by the firmware build.
 
-```yaml
-- name: Clone darknao ZMK fork
-  run: git clone --depth 1 --branch rgb-layer-25.08 https://github.com/darknao/zmk.git src
+To build locally, run `./build.sh` (or `build.bat` on Windows). An optional first argument overrides the pinned ZMK commit with another revision:
+
+```sh
+./build.sh 8aeaaa66fbb4b94948c8763e06f1920ab0b69480
 ```
 
 ### Download Firmware
